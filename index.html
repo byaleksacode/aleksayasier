@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Onest:wght@300;400;500;600;700;800&family=Shrikhand&display=swap">
+<script>document.documentElement.className+=" ld"</script>
 <style>
 :root{
   --sapphire:#3f5fa8;--cobalt:#3452a3;--night:#1f2b4a;--azul:#7f9ad6;--cielo:#c9d6ef;
@@ -1867,9 +1868,46 @@ html.gv-lock,html.gv-lock body{overflow:hidden}
   #dresscode .dcol{grid-row:1/span 2!important}
 }
 @media (min-width:860px) and (max-width:1199px){#dresscode .dcol{zoom:1.35!important}}
+
+/* ===== carga: rueda azul girando + porcentaje ===== */
+#ldr{display:none}
+html.ld{overflow:hidden}
+html.ld #ldr,#ldr.back{display:grid}
+#ldr{position:fixed;inset:0;z-index:9999;place-items:center;background:var(--paper);
+  background-image:radial-gradient(60% 45% at 50% 50%,rgba(63,95,168,.16),transparent 70%),radial-gradient(circle at 1px 1px,rgba(31,43,74,.08) 1px,transparent 1.5px);background-size:auto,22px 22px;
+  transition:opacity .45s ease,visibility .45s}
+#ldr.out{opacity:0;visibility:hidden;pointer-events:none}
+#ldr.back{opacity:0;animation:ldin .3s ease forwards}
+@keyframes ldin{to{opacity:1}}
+#ldr .lw{position:relative;width:128px;height:128px}
+#ldr svg{width:100%;height:100%;display:block;animation:spin 2.6s linear infinite;filter:drop-shadow(0 14px 22px rgba(31,43,74,.25))}
+#ldr .wp{fill:var(--cobalt)}#ldr .wc{fill:var(--paper)}
+#ldr b{position:absolute;inset:0;display:grid;place-items:center;font-weight:600;font-size:1rem;letter-spacing:-.04em;color:var(--night);font-variant-numeric:tabular-nums}
+html.ld .ani{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){#ldr svg{animation-duration:8s}}
 </style>
 </head>
 <body>
+<div id="ldr" aria-hidden="true"><div class="lw"><svg viewBox="0 0 100 100"><path class="wp" d="M50.00 10.00A7.6 7.6 0 0 1 62.36 11.96A7.6 7.6 0 0 1 73.51 17.64A7.6 7.6 0 0 1 82.36 26.49A7.6 7.6 0 0 1 88.04 37.64A7.6 7.6 0 0 1 90.00 50.00A7.6 7.6 0 0 1 88.04 62.36A7.6 7.6 0 0 1 82.36 73.51A7.6 7.6 0 0 1 73.51 82.36A7.6 7.6 0 0 1 62.36 88.04A7.6 7.6 0 0 1 50.00 90.00A7.6 7.6 0 0 1 37.64 88.04A7.6 7.6 0 0 1 26.49 82.36A7.6 7.6 0 0 1 17.64 73.51A7.6 7.6 0 0 1 11.96 62.36A7.6 7.6 0 0 1 10.00 50.00A7.6 7.6 0 0 1 11.96 37.64A7.6 7.6 0 0 1 17.64 26.49A7.6 7.6 0 0 1 26.49 17.64A7.6 7.6 0 0 1 37.64 11.96A7.6 7.6 0 0 1 50.00 10.00Z"/><circle class="wc" cx="50" cy="50" r="23"/></svg><b id="ldp">0%</b></div></div>
+<script>
+(function(){var D=document.documentElement,L=document.getElementById('ldr'),P=document.getElementById('ldp'),v=0,done=0,t0=Date.now();
+  function set(n){v=n;P.textContent=Math.round(n)+'%'}
+  var iv=setInterval(function(){set(Math.min(94,v+(v<70?4:1.6)))},40);
+  function goSec(){try{var id=sessionStorage.getItem('lsec');sessionStorage.removeItem('lsec');if(!id)return;
+    var M={viaje:'rakia',aprovecha:'rakia',rakia:'viaje',rechnik:'tradicion'},e=document.getElementById(id)||document.getElementById(M[id]);
+    if(e&&e.id!=='inicio'){D.style.scrollBehavior='auto';e.scrollIntoView();setTimeout(function(){D.style.scrollBehavior=''},50)}}catch(_){}}
+  function fin(){if(done)return;done=1;setTimeout(function(){clearInterval(iv);var a=v,st=performance.now();
+    (function f(t){var k=Math.min(1,(t-st)/300);set(a+(100-a)*k);if(k<1)requestAnimationFrame(f);else setTimeout(function(){goSec();L.classList.add('out');D.classList.remove('ld')},140)})(st)},Math.max(0,1050-(Date.now()-t0)))}
+  if(document.readyState==='complete')fin();else addEventListener('load',fin);setTimeout(fin,6000);
+  /* al volver atrás (caché del navegador) no dejar la pantalla de carga puesta */
+  addEventListener('pageshow',function(e){if(e.persisted){L.classList.remove('back');L.classList.add('out');D.classList.remove('ld')}});
+  /* cambio de idioma: fundido a la rueda y se mantiene la sección */
+  window.langGo=function(a,e){var h=a.getAttribute('href');if(!h||h==='#'||window.top!==window.self)return;e.preventDefault();
+    var cur='inicio';[].forEach.call(document.querySelectorAll('header[id],section[id]'),function(x){if(x.getBoundingClientRect().top<=innerHeight*.35&&x.offsetParent)cur=x.id});
+    try{sessionStorage.setItem('lsec',cur)}catch(_){}
+    P.textContent='';L.classList.remove('out');L.classList.add('back');setTimeout(function(){location.href=h},320)};
+})();
+</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="fl" viewBox="0 0 40 40"><g transform="translate(20 20)"><ellipse rx="6.5" ry="11" cy="-10"/><ellipse rx="6.5" ry="11" cy="-10" transform="rotate(72)"/><ellipse rx="6.5" ry="11" cy="-10" transform="rotate(144)"/><ellipse rx="6.5" ry="11" cy="-10" transform="rotate(216)"/><ellipse rx="6.5" ry="11" cy="-10" transform="rotate(288)"/><circle r="5" fill="#f7f4ee"/><circle r="2.6"/></g></symbol>
@@ -1891,7 +1929,7 @@ html.gv-lock,html.gv-lock body{overflow:hidden}
 <div class="wrap">
 <!-- ===== PORTADA ===== -->
 <header class="side hA" id="inicio">
-  <div class="lang" role="group" aria-label="Idioma"><a href="#" class="on" aria-current="true" lang="es">ES</a><a href="bg/" id="langbg" lang="bg">БГ</a></div>
+  <div class="lang" role="group" aria-label="Idioma"><a href="#" class="on" aria-current="true" lang="es">ES</a><a href="bg/" id="langbg" lang="bg" onclick="langGo(this,event)">БГ</a></div>
   <p class="ltoast" id="ltoast" role="status" hidden>Скоро на български ♥</p>
   <p class="k ani" style="--d:.05s" id="wtop" aria-live="polite"><b id="wt1">11 · 09 · 2027</b><span id="wt2">Varna, Bulgaria</span></p>
   <h1 class="nmA ani" style="--d:.15s"><span>Aleksa</span><span class="l2"><i>y</i>Asier</span></h1>
