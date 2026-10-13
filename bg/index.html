@@ -1352,7 +1352,7 @@ section.s .head > .hand,#baile .hand,#dresscode .dctx > .hand,#regalos.gift2 .tx
 .bgi[open] summary i{transform:rotate(45deg)}
 .bgi p{margin:0;padding:0 0 14px 40px;font-size:.9rem;line-height:1.45;color:#5d6374}
 .bgi p .hand{font-size:.85rem;margin-left:4px}
-.bgi[open] p{animation:bgin .35s ease}
+.bgi[open] p{animation:none}
 @keyframes bgin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (min-width:860px){.bnote{max-width:560px;padding:32px 36px 20px}#tradicion.bgb{align-content:center!important}}
 
@@ -1870,6 +1870,17 @@ html.gv-lock,html.gv-lock body{overflow:hidden}
 }
 @media (min-width:860px) and (max-width:1199px){#dresscode .dcol{zoom:1.35!important}}
 
+
+/* acordeón suave */
+details.acc .acw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.3,.7,.2,1)}
+details.acc .aci{overflow:hidden;min-height:0;opacity:0;transition:opacity .3s ease}
+details.acc.on .acw{grid-template-rows:1fr}
+details.acc.on .aci{opacity:1;transition:opacity .35s ease .08s}
+details.acc[open] summary::after{transform:none}
+details.acc.on summary::after{transform:rotate(45deg)}
+.bgi.acc[open] summary i{transform:none}
+.bgi.acc.on summary i{transform:rotate(45deg)}
+@media (prefers-reduced-motion:reduce){details.acc .acw,details.acc .aci{transition:none}}
 /* ===== carga: telón azul con porcentaje grande ===== */
 #ldr{display:none}
 html.ld{overflow:hidden}
@@ -1992,7 +2003,7 @@ html.ld .ani{animation-play-state:paused}
   <div class="pbw">
     <div><div class="pbh"><b>Събота 11</b><span class="hand">големият ден</span></div>
     <ol class="ptl3" id="ptl3">
-      <li class="on"><span class="pdot"><svg viewBox="0 0 24 24"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10M9 21v-5a3 3 0 0 1 6 0v5M3 21h18"/></svg></span><div><h3>Църква</h3><p>„Св. Архангел Михаил“, Варна.</p><a class="pmp" href="https://maps.google.com/?q=San+Arcangel+Miguel+Varna" target="_blank" rel="noopener">Виж картата ↗</a></div></li>
+      <li class="on"><span class="pdot"><svg viewBox="0 0 24 24"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10M9 21v-5a3 3 0 0 1 6 0v5M3 21h18"/></svg></span><div><h3>Църква</h3><p>„Св. Архангел Михаил“, Варна.</p><a class="pmp" href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x40a453f641d0526b:0x9f7fd4a3b0f64cae" target="_blank" rel="noopener">Виж картата ↗</a></div></li>
       <li><span class="pdot"><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M10 5l2-2 2 2"/></svg></span><div><h3>Церемония</h3><p>На скалите на Thracian Cliffs.</p><a class="pmp" href="https://maps.google.com/?q=Thracian+Cliffs+Golf+Beach+Resort" target="_blank" rel="noopener">Виж картата ↗</a></div></li>
       <li><span class="pdot"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v7M8 21h8"/></svg></span><div><h3>Вечеря и купон</h3><p>Докато краката държат.</p></div></li>
     </ol></div>
@@ -2322,11 +2333,17 @@ html.ld .ani{animation-play-state:paused}
   /* programa: la línea del sábado se dibuja al verla */
   (function(){var t=$("ptl3");if(!t)return;if(!('IntersectionObserver' in window)){t.classList.add('in');return;}var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){setTimeout(function(){t.classList.add('in')},300);o.disconnect();}},{threshold:.4});o.observe(t);})();
   /* boda búlgara: solo uno abierto a la vez */
-  (function(){var n=$("bnote");if(!n)return;var ds=[].slice.call(n.querySelectorAll('details'));ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)ds.forEach(function(o){if(o!==d)o.open=false})})})})();
   /* idioma: búlgaro, próximamente */
   (function(){var b=$("langbg"),t=$("ltoast");if(!b)return;document.querySelector('.lang a.on').addEventListener('click',function(e){e.preventDefault()});if(b.getAttribute('href')!=='#')return;b.addEventListener('click',function(e){e.preventDefault();t.hidden=false;clearTimeout(b._t);b._t=setTimeout(function(){t.hidden=true},2200);});document.querySelector('.lang a.on').addEventListener('click',function(e){e.preventDefault()});})();
-  /* dudas: al abrir una pregunta se cierra la anterior */
-  (function(){var ds=[].slice.call(document.querySelectorAll('.faq details'));ds.forEach(function(d){d.addEventListener('toggle',function(){if(!d.open)return;var y=d.getBoundingClientRect().top;ds.forEach(function(o){if(o!==d&&o.open)o.open=false});var dy=d.getBoundingClientRect().top-y;if(Math.abs(dy)>1)window.scrollBy({top:dy,behavior:'instant'})})})})();
+  /* acordeones (dudas y boda búlgara): abrir/cerrar suave con CSS, solo una abierta */
+  (function(){function group(root){if(!root)return;var ds=[].slice.call(root.querySelectorAll('details'));
+      ds.forEach(function(d){var sm=d.querySelector('summary'),w=document.createElement('div'),c=document.createElement('div');w.className='acw';c.className='aci';
+        while(sm.nextSibling)c.appendChild(sm.nextSibling);w.appendChild(c);d.appendChild(w);
+        var on=d.open;d.open=true;d.classList.add('acc');d.classList.toggle('on',on);sm.setAttribute('aria-expanded',on);
+        sm.addEventListener('click',function(e){e.preventDefault();var op=!d.classList.contains('on');
+          ds.forEach(function(o){if(o!==d&&o.classList.contains('on')){o.classList.remove('on');o.querySelector('summary').setAttribute('aria-expanded',false)}});
+          d.classList.toggle('on',op);sm.setAttribute('aria-expanded',op)})})}
+    group(document.querySelector('.faq'));group(document.getElementById('bnote'))})();
   /* rasca y gana */
   (function(){var cv=$("rcv");if(!cv)return;var P=[['Танц','с булката'],['Наздравица','с кума'],['Най-голямото парче','от питата'],['Място на първия ред','в църквата'],['Първото парче','от тортата'],['Едно «¡salud!»','с бащата на младоженеца'],['Снимка','с младоженците'],['Ти избираш песен','за купона'],['Прегръдка','от младоженците'],['Шот ракия','с младоженеца'],['Поздрав','от диджея'],['Първото питие','на бара']],pz=$("rprize"),ag=$("ragain"),nm=$("rnum"),cx,done=false,down=false,lp=null,last=-1,bag=[],lastDeal=0;
     function paint(){var r=cv.parentNode.getBoundingClientRect();if(!r.width)return;var d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;cv.classList.add('snap');cv.style.opacity=1;void cv.offsetWidth;cv.classList.remove('snap');done=false;cx=cv.getContext('2d');cx.setTransform(d,0,0,d,0,0);cx.globalCompositeOperation='source-over';

@@ -1352,7 +1352,7 @@ section.s .head > .hand,#baile .hand,#dresscode .dctx > .hand,#regalos.gift2 .tx
 .bgi[open] summary i{transform:rotate(45deg)}
 .bgi p{margin:0;padding:0 0 14px 40px;font-size:.9rem;line-height:1.45;color:#5d6374}
 .bgi p .hand{font-size:.85rem;margin-left:4px}
-.bgi[open] p{animation:bgin .35s ease}
+.bgi[open] p{animation:none}
 @keyframes bgin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (min-width:860px){.bnote{max-width:560px;padding:32px 36px 20px}#tradicion.bgb{align-content:center!important}}
 
@@ -1870,6 +1870,17 @@ html.gv-lock,html.gv-lock body{overflow:hidden}
 }
 @media (min-width:860px) and (max-width:1199px){#dresscode .dcol{zoom:1.35!important}}
 
+
+/* acordeón suave */
+details.acc .acw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.3,.7,.2,1)}
+details.acc .aci{overflow:hidden;min-height:0;opacity:0;transition:opacity .3s ease}
+details.acc.on .acw{grid-template-rows:1fr}
+details.acc.on .aci{opacity:1;transition:opacity .35s ease .08s}
+details.acc[open] summary::after{transform:none}
+details.acc.on summary::after{transform:rotate(45deg)}
+.bgi.acc[open] summary i{transform:none}
+.bgi.acc.on summary i{transform:rotate(45deg)}
+@media (prefers-reduced-motion:reduce){details.acc .acw,details.acc .aci{transition:none}}
 /* ===== carga: telón azul con porcentaje grande ===== */
 #ldr{display:none}
 html.ld{overflow:hidden}
@@ -1964,7 +1975,7 @@ html.ld .ani{animation-play-state:paused}
   <div class="pbw">
     <div><div class="pbh"><b>Sábado 11</b><span class="hand">el gran día</span></div>
     <ol class="ptl3" id="ptl3">
-      <li class="on"><span class="pdot"><svg viewBox="0 0 24 24"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10M9 21v-5a3 3 0 0 1 6 0v5M3 21h18"/></svg></span><div><h3>Iglesia</h3><p>San Arcángel Miguel, en Varna.</p><a class="pmp" href="https://maps.google.com/?q=San+Arcangel+Miguel+Varna" target="_blank" rel="noopener">Ver mapa ↗</a></div></li>
+      <li class="on"><span class="pdot"><svg viewBox="0 0 24 24"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10M9 21v-5a3 3 0 0 1 6 0v5M3 21h18"/></svg></span><div><h3>Iglesia</h3><p>San Arcángel Miguel, en Varna.</p><a class="pmp" href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x40a453f641d0526b:0x9f7fd4a3b0f64cae" target="_blank" rel="noopener">Ver mapa ↗</a></div></li>
       <li><span class="pdot"><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M10 5l2-2 2 2"/></svg></span><div><h3>Ceremonia</h3><p>Sobre los acantilados de Thracian Cliffs.</p><a class="pmp" href="https://maps.google.com/?q=Thracian+Cliffs+Golf+Beach+Resort" target="_blank" rel="noopener">Ver mapa ↗</a></div></li>
       <li><span class="pdot"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v7M8 21h8"/></svg></span><div><h3>Cena y fiesta</h3><p>Hasta que el cuerpo aguante.</p></div></li>
     </ol></div>
@@ -1978,7 +1989,7 @@ html.ld .ani{animation-play-state:paused}
 <!-- ===== BODA BÚLGARA ===== -->
 <section class="s bgb" id="tradicion">
   <div class="head rv"><span class="hand">para que no te pille de sorpresa</span><h2>Boda búlgara</h2><p class="lead">La ceremonia es ortodoxa y en búlgaro. Si en algún momento te preguntas «¿qué está pasando?», aquí tienes la respuesta.</p></div>
-  <div class="bnote rv" id="bnote"><div class="bcols"><details class="bgi" open><summary><svg viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/><path d="M5 19h14"/></svg><b>Las coronas</b><i aria-hidden="true">+</i></summary><p>El sacerdote (aquí le llaman «pope») pone una corona a cada uno. Significa que, desde ese momento, son los reyes de su propia casa: una familia nueva. <span class="hand">nada de tiaras</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0zM12 14v6M8 21h8"/></svg><b>Una copa para dos</b><i aria-hidden="true">+</i></summary><p>Beben vino de la misma copa, tres sorbos cada uno. Es su forma de decir que, a partir de hoy, lo comparten todo.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v5h-5"/></svg><b>Tres vueltas</b><i aria-hidden="true">+</i></summary><p>De la mano y detrás del pope, dan tres vueltas alrededor de la mesa del altar. Son sus primeros pasos como matrimonio.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg><b>Los kumove</b><i aria-hidden="true">+</i></summary><p>Se pronuncia «kúmove». Son los testigos y padrinos de la boda, normalmente una pareja: el kum y la kuma. En Bulgaria es un papel para toda la vida, y suelen ser también los padrinos de los hijos.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M8 21c-2 0-3-2-2.5-4.5L7 10c.6-2.5 4-2.5 4.4 0l.6 6c.3 3-1.5 5-4 5z"/><circle cx="14" cy="5" r="1.2"/><circle cx="16.5" cy="7" r="1"/><circle cx="18" cy="9.5" r=".9"/></svg><b>El pisotón</b><i aria-hidden="true">+</i></summary><p>En algún momento de la ceremonia, cada uno intenta pisarle el pie al otro. Dicen que quien lo consiga primero mandará en casa. <span class="hand">apuestas abiertas</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="9" ry="6"/><path d="M8 11l2 2M12 10l2 2M15 12l2 2"/></svg><b>Pan y miel</b><i aria-hidden="true">+</i></summary><p>Al llegar al banquete nos reciben con una «pita», un pan redondo casero. Cada uno tira de un lado: quien se quede el trozo más grande, se toma la revancha del pisotón. Después se moja en miel, para que la vida juntos sea dulce. <span class="hand">¡Nazdrave! (¡salud!)</span></p></details></div></div>
+  <div class="bnote rv" id="bnote"><div class="bcols"><details class="bgi" open><summary><svg viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/><path d="M5 19h14"/></svg><b>Las coronas</b><i aria-hidden="true">+</i></summary><p>El sacerdote (aquí le llaman «pop») pone una corona a cada uno. Significa que, desde ese momento, son los reyes de su propia casa: una familia nueva. <span class="hand">nada de tiaras</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0zM12 14v6M8 21h8"/></svg><b>Una copa para dos</b><i aria-hidden="true">+</i></summary><p>Beben vino de la misma copa, tres sorbos cada uno. Es su forma de decir que, a partir de hoy, lo comparten todo.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v5h-5"/></svg><b>Tres vueltas</b><i aria-hidden="true">+</i></summary><p>De la mano y detrás del pop, dan tres vueltas alrededor de la mesa del altar. Son sus primeros pasos como matrimonio.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg><b>Los kumove</b><i aria-hidden="true">+</i></summary><p>Se pronuncia «kúmove». Son los testigos y padrinos de la boda, normalmente una pareja: el kum y la kuma. En Bulgaria es un papel para toda la vida, y suelen ser también los padrinos de los hijos.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M12.5 21.8c-2.8.3-4.6-1.4-4.4-3.8.1-2-1.2-3.4-1.3-5.5-.2-2.9 1.9-5 4.8-5 3.1 0 5.1 2.1 4.9 5.1-.2 2.3-1.4 3.4-1.3 5.5.1 2.2-.6 3.5-2.7 3.7z"/><g style="fill:currentColor;stroke:none"><ellipse cx="7.6" cy="4" rx="1.7" ry="1.9"/><circle cx="11.3" cy="2.6" r="1.25"/><circle cx="14.3" cy="2.9" r="1.1"/><circle cx="16.8" cy="4.3" r=".98"/><circle cx="18.5" cy="6.4" r=".86"/></g></svg><b>El pisotón</b><i aria-hidden="true">+</i></summary><p>En algún momento de la ceremonia, cada uno intenta pisarle el pie al otro. Dicen que quien lo consiga primero mandará en casa. <span class="hand">apuestas abiertas</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="9" ry="6"/><path d="M8 11l2 2M12 10l2 2M15 12l2 2"/></svg><b>Pan y miel</b><i aria-hidden="true">+</i></summary><p>Al llegar al banquete nos reciben con una «pita», un pan redondo casero. Cada uno tira de un lado: quien se quede el trozo más grande, se toma la revancha del pisotón. Después se moja en miel, para que la vida juntos sea dulce. <span class="hand">¡Nazdrave! (¡salud!)</span></p></details></div></div>
 </section>
 <!-- ===== BAILE ===== -->
 <section class="s rasca" id="rasca">
@@ -2317,11 +2328,17 @@ html.ld .ani{animation-play-state:paused}
   /* programa: la línea del sábado se dibuja al verla */
   (function(){var t=$("ptl3");if(!t)return;if(!('IntersectionObserver' in window)){t.classList.add('in');return;}var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){setTimeout(function(){t.classList.add('in')},300);o.disconnect();}},{threshold:.4});o.observe(t);})();
   /* boda búlgara: solo uno abierto a la vez */
-  (function(){var n=$("bnote");if(!n)return;var ds=[].slice.call(n.querySelectorAll('details'));ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)ds.forEach(function(o){if(o!==d)o.open=false})})})})();
   /* idioma: búlgaro, próximamente */
   (function(){var b=$("langbg"),t=$("ltoast");if(!b)return;document.querySelector('.lang a.on').addEventListener('click',function(e){e.preventDefault()});if(b.getAttribute('href')!=='#')return;b.addEventListener('click',function(e){e.preventDefault();t.hidden=false;clearTimeout(b._t);b._t=setTimeout(function(){t.hidden=true},2200);});document.querySelector('.lang a.on').addEventListener('click',function(e){e.preventDefault()});})();
-  /* dudas: al abrir una pregunta se cierra la anterior */
-  (function(){var ds=[].slice.call(document.querySelectorAll('.faq details'));ds.forEach(function(d){d.addEventListener('toggle',function(){if(!d.open)return;var y=d.getBoundingClientRect().top;ds.forEach(function(o){if(o!==d&&o.open)o.open=false});var dy=d.getBoundingClientRect().top-y;if(Math.abs(dy)>1)window.scrollBy({top:dy,behavior:'instant'})})})})();
+  /* acordeones (dudas y boda búlgara): abrir/cerrar suave con CSS, solo una abierta */
+  (function(){function group(root){if(!root)return;var ds=[].slice.call(root.querySelectorAll('details'));
+      ds.forEach(function(d){var sm=d.querySelector('summary'),w=document.createElement('div'),c=document.createElement('div');w.className='acw';c.className='aci';
+        while(sm.nextSibling)c.appendChild(sm.nextSibling);w.appendChild(c);d.appendChild(w);
+        var on=d.open;d.open=true;d.classList.add('acc');d.classList.toggle('on',on);sm.setAttribute('aria-expanded',on);
+        sm.addEventListener('click',function(e){e.preventDefault();var op=!d.classList.contains('on');
+          ds.forEach(function(o){if(o!==d&&o.classList.contains('on')){o.classList.remove('on');o.querySelector('summary').setAttribute('aria-expanded',false)}});
+          d.classList.toggle('on',op);sm.setAttribute('aria-expanded',op)})})}
+    group(document.querySelector('.faq'));group(document.getElementById('bnote'))})();
   /* rasca y gana */
   (function(){var cv=$("rcv");if(!cv)return;var P=[['Primer joró','con la novia'],['Un brindis','con los kumove'],['El trozo grande','de la pita'],['Primera fila','en la iglesia'],['Un baile','con el novio'],['Un «nazdráve»','con el abuelo de la novia'],['Una foto','con los novios'],['Elegir una canción','para la fiesta'],['Un abrazo','de los novios'],['Un chupito','con el novio'],['Una dedicatoria','del DJ'],['La primera copa','de la barra']],pz=$("rprize"),ag=$("ragain"),nm=$("rnum"),cx,done=false,down=false,lp=null,last=-1,bag=[],lastDeal=0;
     function paint(){var r=cv.parentNode.getBoundingClientRect();if(!r.width)return;var d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;cv.classList.add('snap');cv.style.opacity=1;void cv.offsetWidth;cv.classList.remove('snap');done=false;cx=cv.getContext('2d');cx.setTransform(d,0,0,d,0,0);cx.globalCompositeOperation='source-over';
