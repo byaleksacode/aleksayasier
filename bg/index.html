@@ -1869,22 +1869,23 @@ html.gv-lock,html.gv-lock body{overflow:hidden}
 }
 @media (min-width:860px) and (max-width:1199px){#dresscode .dcol{zoom:1.35!important}}
 
-/* ===== carga: rueda azul girando + porcentaje ===== */
+/* ===== carga: telón azul con porcentaje grande ===== */
 #ldr{display:none}
 html.ld{overflow:hidden}
-html.ld #ldr,#ldr.back{display:grid}
-#ldr{position:fixed;inset:0;z-index:9999;place-items:center;background:var(--paper);
-  background-image:radial-gradient(60% 45% at 50% 50%,rgba(63,95,168,.16),transparent 70%),radial-gradient(circle at 1px 1px,rgba(31,43,74,.08) 1px,transparent 1.5px);background-size:auto,22px 22px;
-  transition:opacity .45s ease,visibility .45s}
-#ldr.out{opacity:0;visibility:hidden;pointer-events:none}
-#ldr.back{opacity:0;animation:ldin .3s ease forwards}
-@keyframes ldin{to{opacity:1}}
-#ldr .lw{position:relative;width:128px;height:128px}
-#ldr svg{width:100%;height:100%;display:block;animation:spin 2.6s linear infinite;filter:drop-shadow(0 14px 22px rgba(31,43,74,.25))}
-#ldr .wp{fill:var(--cobalt)}#ldr .wc{fill:var(--paper)}
-#ldr b{position:absolute;inset:0;display:grid;place-items:center;font-weight:600;font-size:1rem;letter-spacing:-.04em;color:var(--night);font-variant-numeric:tabular-nums}
+html.ld #ldr,#ldr.on{display:flex}
+#ldr{position:fixed;inset:0;z-index:9999;flex-direction:column;justify-content:space-between;background:var(--cobalt);color:var(--paper);
+  padding:calc(30px + env(safe-area-inset-top,0px)) var(--pad,24px) calc(34px + env(safe-area-inset-bottom,0px));
+  transition:transform .8s cubic-bezier(.77,0,.18,1);will-change:transform}
+#ldr.out{transform:translateY(-101%);pointer-events:none}
+#ldr .lt{display:flex;justify-content:space-between;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:-.01em;line-height:1.15}
+#ldr .lt span:last-child{text-align:right;font-weight:500;opacity:.75}
+#ldr .ln{display:flex;align-items:flex-end;font-size:clamp(9rem,42vw,19rem);font-weight:700;letter-spacing:-.07em;line-height:.78;font-variant-numeric:tabular-nums}
+#ldr .ln small{font-size:.3em;letter-spacing:-.03em;margin:0 0 .1em .05em}
+#ldr .lb{height:2px;background:rgba(247,244,238,.25);margin-top:22px;position:relative}
+#ldr .lb i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--paper)}
+@media (min-width:860px){#ldr{padding:36px 48px 44px}#ldr .lt{font-size:.9rem}}
 html.ld .ani{animation-play-state:paused}
-@media (prefers-reduced-motion:reduce){#ldr svg{animation-duration:8s}}
+@media (prefers-reduced-motion:reduce){#ldr{transition-duration:.01s}}
 
 /* búlgaro: la letra a mano en cirílico (Caveat) a la misma altura que Homemade Apple */
 .hand,.mark sup,.who i,.palname,.env .card2 span,.nmA i,.dhint,.fword i,.dk .qt,.nm2 i,.b3 span,#aprovecha .swipe{font-size-adjust:.6}
@@ -1916,24 +1917,24 @@ html.ld .ani{animation-play-state:paused}
 </style>
 </head>
 <body>
-<div id="ldr" aria-hidden="true"><div class="lw"><svg viewBox="0 0 100 100"><path class="wp" d="M50.00 10.00A7.6 7.6 0 0 1 62.36 11.96A7.6 7.6 0 0 1 73.51 17.64A7.6 7.6 0 0 1 82.36 26.49A7.6 7.6 0 0 1 88.04 37.64A7.6 7.6 0 0 1 90.00 50.00A7.6 7.6 0 0 1 88.04 62.36A7.6 7.6 0 0 1 82.36 73.51A7.6 7.6 0 0 1 73.51 82.36A7.6 7.6 0 0 1 62.36 88.04A7.6 7.6 0 0 1 50.00 90.00A7.6 7.6 0 0 1 37.64 88.04A7.6 7.6 0 0 1 26.49 82.36A7.6 7.6 0 0 1 17.64 73.51A7.6 7.6 0 0 1 11.96 62.36A7.6 7.6 0 0 1 10.00 50.00A7.6 7.6 0 0 1 11.96 37.64A7.6 7.6 0 0 1 17.64 26.49A7.6 7.6 0 0 1 26.49 17.64A7.6 7.6 0 0 1 37.64 11.96A7.6 7.6 0 0 1 50.00 10.00Z"/><circle class="wc" cx="50" cy="50" r="23"/></svg><b id="ldp">0%</b></div></div>
+<div id="ldr" aria-hidden="true"><div class="lt"><span>Aleksa<br>&amp; Asier</span><span>11·09·27<br>Варна</span></div><div><div class="ln"><span id="ldp">0</span><small>%</small></div><div class="lb"><i id="ldb"></i></div></div></div>
 <script>
-(function(){var D=document.documentElement,L=document.getElementById('ldr'),P=document.getElementById('ldp'),v=0,done=0,t0=Date.now();
-  function set(n){v=n;P.textContent=Math.round(n)+'%'}
-  var iv=setInterval(function(){set(Math.min(94,v+(v<70?4:1.6)))},40);
+(function(){var D=document.documentElement,L=document.getElementById('ldr'),P=document.getElementById('ldp'),B=document.getElementById('ldb'),v=0,done=0,t0=Date.now();
+  L.classList.add('on');function set(n){v=n;P.textContent=Math.round(n);B.style.width=n+'%'}
+  var iv=setInterval(function(){set(Math.min(94,v+(v<75?5:1.5)))},40);
   function goSec(){try{var id=sessionStorage.getItem('lsec');sessionStorage.removeItem('lsec');if(!id)return;
     var M={viaje:'rakia',aprovecha:'rakia',rakia:'viaje',rechnik:'tradicion'},e=document.getElementById(id)||document.getElementById(M[id]);
     if(e&&e.id!=='inicio'){D.style.scrollBehavior='auto';e.scrollIntoView();setTimeout(function(){D.style.scrollBehavior=''},50)}}catch(_){}}
   function fin(){if(done)return;done=1;setTimeout(function(){clearInterval(iv);var a=v,st=performance.now();
-    (function f(t){var k=Math.min(1,(t-st)/300);set(a+(100-a)*k);if(k<1)requestAnimationFrame(f);else setTimeout(function(){goSec();L.classList.add('out');D.classList.remove('ld')},140)})(st)},Math.max(0,1050-(Date.now()-t0)))}
-  if(document.readyState==='complete')fin();else addEventListener('load',fin);setTimeout(fin,6000);
+    (function f(t){var k=Math.min(1,(t-st)/220);set(a+(100-a)*k);if(k<1)requestAnimationFrame(f);else setTimeout(function(){goSec();L.classList.add('out');D.classList.remove('ld')},80)})(st)},Math.max(0,700-(Date.now()-t0)))}
+  if(document.readyState==='complete')fin();else addEventListener('load',fin);setTimeout(fin,4000);
   /* al volver atrás (caché del navegador) no dejar la pantalla de carga puesta */
-  addEventListener('pageshow',function(e){if(e.persisted){L.classList.remove('back');L.classList.add('out');D.classList.remove('ld')}});
-  /* cambio de idioma: fundido a la rueda y se mantiene la sección */
+  addEventListener('pageshow',function(e){if(e.persisted){L.classList.add('out');D.classList.remove('ld')}});
+  /* cambio de idioma: baja el telón azul y se mantiene la sección */
   window.langGo=function(a,e){var h=a.getAttribute('href');if(!h||h==='#'||window.top!==window.self)return;e.preventDefault();
     var cur='inicio';[].forEach.call(document.querySelectorAll('header[id],section[id]'),function(x){if(x.getBoundingClientRect().top<=innerHeight*.35&&x.offsetParent)cur=x.id});
     try{sessionStorage.setItem('lsec',cur)}catch(_){}
-    P.textContent='';L.classList.remove('out');L.classList.add('back');setTimeout(function(){location.href=h},320)};
+    P.textContent='0';B.style.width='0';L.classList.remove('out');setTimeout(function(){location.href=h},650)};
 })();
 </script>
 
