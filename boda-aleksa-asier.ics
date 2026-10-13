@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Aleksa y Asier//Boda//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:boda-aleksa-asier-20270911@aleksayasier
+DTSTAMP:20261013T000000Z
+DTSTART;VALUE=DATE:20270911
+DTEND;VALUE=DATE:20270912
+SUMMARY:Boda de Aleksa y Asier
+LOCATION:Varna\, Bulgaria
+DESCRIPTION:Iglesia San Arcángel Miguel (Varna) y celebración en Thracian Cliffs Golf & Beach Resort. Más info en la web.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Boda de Aleksa y Asier
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

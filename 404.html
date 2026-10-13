@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Página perdida · Aleksa y Asier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Caveat:wght@500&family=Onest:wght@400;500;600;700&display=swap">
+<style>:root{--night:#1f2b4a;--cobalt:#3452a3;--sky:#dfe7f5;--beige:#ece3d1;--paper:#f7f4ee;--red:#c63a2f;--muted:#565c6e;--hand:"Homemade Apple","Caveat",cursive;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--night);font-family:Onest,Arial,sans-serif;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;overflow-x:hidden;
+  padding:max(18px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
+.hand{font-family:var(--hand);color:var(--cobalt);display:inline-block;transform:rotate(-3deg);font-size-adjust:.6}
+header{text-align:center;display:grid;justify-items:center}
+header .hand{font-size:.95rem}
+.big{font-size:clamp(4.2rem,22vw,9rem);font-weight:600;letter-spacing:-.06em;line-height:.82;color:var(--cobalt);margin:4px 0 0}
+h1{margin:8px 0 0;font-size:clamp(1.15rem,5.4vw,2rem);letter-spacing:-.03em;font-weight:600;text-transform:uppercase;line-height:1.1}
+.lead{color:var(--muted);max-width:32ch;margin:8px auto 0;line-height:1.45;font-size:.95rem}
+main{flex:1;display:flex;min-height:300px;margin:16px 0 0}
+/* juego */
+.game{position:relative;flex:1;width:100%;max-width:560px;margin:0 auto;min-height:300px;border-radius:24px;overflow:hidden;touch-action:manipulation;user-select:none;-webkit-user-select:none;
+  background:radial-gradient(circle,rgba(52,82,163,.12) 1.2px,transparent 1.3px) 0 0/18px 18px,var(--sky)}
+.hud{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;z-index:3;pointer-events:none}
+.hud>span{background:#fff;border-radius:999px;padding:6px 12px;font-weight:600;font-size:.82rem;box-shadow:0 4px 12px rgba(31,43,74,.1)}
+.hud b{font-size:1rem;color:var(--cobalt)}
+.start{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;text-align:center;padding:24px 22px;z-index:4;background:rgba(223,231,245,.9);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.start[hidden]{display:none}
+.start .ico{width:74px;height:84px}
+.start p{margin:0;max-width:28ch;line-height:1.45;color:var(--night);font-size:.95rem}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-block;background:var(--cobalt);color:#fff;font-weight:600;font-size:.95rem;padding:14px 24px;border-radius:999px;text-align:center;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:#fff;color:var(--cobalt);box-shadow:inset 0 0 0 1.5px var(--cobalt)}
+.btn:focus-visible{outline:2px solid var(--night);outline-offset:3px}
+.bq{position:absolute;top:-80px;width:var(--sz,60px);height:calc(var(--sz,60px) * 1.14);border:0;padding:0;background:none;cursor:pointer;animation:fall linear forwards;-webkit-tap-highlight-color:transparent}
+.bq svg{width:100%;height:100%;display:block;pointer-events:none;animation:sway var(--sw,1s) ease-in-out infinite alternate;filter:drop-shadow(0 6px 8px rgba(31,43,74,.18))}
+.bq.got{animation:pop .35s ease-out forwards}
+@keyframes sway{from{transform:translateX(calc(var(--dx,0px) * -1))}to{transform:translateX(var(--dx,0px))}}
+.bq.bad.got~.x{display:none}
+.plus.neg{color:var(--night)}
+.game.hit{animation:hit .3s}
+@keyframes hit{50%{box-shadow:inset 0 0 0 6px var(--red)}}
+@keyframes fall{to{transform:translateY(var(--fallh,520px)) rotate(var(--rot))}}
+@keyframes pop{to{transform:scale(1.6);opacity:0}}
+.plus{position:absolute;font-weight:700;color:var(--red);pointer-events:none;animation:up .7s ease-out forwards;z-index:5}
+@keyframes up{to{transform:translateY(-40px);opacity:0}}
+.result{font-size:1.5rem;font-weight:600;letter-spacing:-.03em;margin:0}
+footer{display:grid;gap:10px;margin:14px auto 0;width:100%;max-width:560px}
+footer .main{width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row .btn{padding:12px 10px;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:8px}
+.row .btn::before{content:"";width:18px;height:18px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 20l1.3-3.9A8 8 0 1 1 8 19.3z' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 20l1.3-3.9A8 8 0 1 1 8 19.3z' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.start .rs{font-size:.88rem;color:var(--muted);margin-top:-6px}
+.start .rt{font-size:1.5rem;font-weight:600;letter-spacing:-.03em}
+.tip{font-size:.78rem;color:var(--muted);line-height:1.45;margin:2px 0 0;text-align:center}
+@media (min-width:700px){body{padding-top:32px}main{min-height:320px}.lead{font-size:1.02rem}}
+@media (max-height:740px){.big{font-size:3.6rem}h1{margin-top:4px}.lead{font-size:.88rem;margin-top:4px}main{min-height:220px;margin-top:12px}.game{min-height:220px}.start .ico{width:56px;height:64px}.tip{display:none}body{padding-top:12px}}
+@media (prefers-reduced-motion:reduce){.bq{animation-duration:6s!important}}
+</style></head><body>
+<header>
+  <span class="hand" data-t="kicker">uy… esta página se ha perdido</span>
+  <p class="big">404</p>
+</header>
+
+<main>
+  <div class="game" id="game" aria-live="polite">
+    <div class="hud"><span><span data-t="score">Ramos</span>: <b id="sc">0</b></span><span><b id="tm">20</b> s</span></div>
+    <div class="start" id="start">
+      <span class="ico" id="ico"></span>
+      <p class="rt" data-t="rules">¡Atrapa los ramos!</p>
+      <p class="rs" data-t="rules2">Cuidado con los zapatos: restan 2.</p>
+      <button class="btn" type="button" id="go" data-t="play">¡Jugar!</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <a class="btn main" href="./" id="home" data-t="back">Volver a la web</a>
+  <div class="row">
+    <a class="btn ghost" href="https://wa.me/34641319466" target="_blank" rel="noopener" data-t="wa1">Aleksa</a>
+    <a class="btn ghost" href="https://wa.me/34608131059" target="_blank" rel="noopener" data-t="wa2">Asier</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* idioma: si la dirección incluye /bg/, todo en búlgaro */
+  var bg=/\/bg(\/|$)/.test(location.pathname)||/^bg/i.test(navigator.language||'')&&!/\/es/.test(location.pathname);
+  var T={kicker:'опа… тази страница се изгуби',score:'Букети',rules:'Хвани букетите!',rules2:'Внимавай с обувките: отнемат 2.',play:'Играй!',back:'Обратно към сайта',wa1:'Алекса',wa2:'Асиер',again:'Още веднъж'};
+  if(bg){document.documentElement.lang='bg';document.title='Изгубена страница · Алекса и Асиер';
+    [].forEach.call(document.querySelectorAll('[data-t]'),function(e){var k=e.getAttribute('data-t');if(T[k])e.textContent=T[k]});
+    }
+  /* en GitHub Pages la web vive en /nombre-del-repositorio/: los enlaces tienen que llevarlo delante */
+  var base='/';if(/\.github\.io$/.test(location.hostname)){var seg=location.pathname.split('/')[1];if(seg&&seg!=='bg'&&seg.indexOf('.')<0)base='/'+seg+'/';}
+  document.getElementById('home').setAttribute('href',base+(bg?'bg/':''));
+  var MSG=bg?[[0,'Нито един? Букетът те избягва ;)'],[1,'Нещо е нещо… опитай пак!'],[6,'Не е зле! Още малко тренировка.'],[14,'Браво! Опасна си на сватби.'],[22,'Ти си следващата! 💍']]
+            :[[0,'¿Ninguno? El ramo te esquiva ;)'],[1,'Algo es algo… ¡prueba otra vez!'],[6,'¡No está mal! Un poco más de práctica.'],[14,'¡Bravo! Eres un peligro en las bodas.'],[22,'¡Te casas tú la próxima! 💍']];
+  var FLOW=['#c63a2f','#f2c6c2','#ffffff','#e9c46a','#7f9ad6'];
+  function bouquet(){var c=FLOW.slice().sort(function(){return Math.random()-.5});
+    return '<svg viewBox="0 0 58 66"><path d="M29 64 L21 34 L37 34 Z" fill="#3a6b4a"/><path d="M20 40 Q29 48 38 40 L36 46 Q29 52 22 46 Z" fill="#fff"/><path d="M27 44 l-6 10 M31 44 l6 10" stroke="#c63a2f" stroke-width="2.4" stroke-linecap="round"/>'+
+      [[18,22,c[0]],[40,22,c[1]],[29,14,c[2]],[22,30,c[3]],[36,30,c[4]],[29,26,c[0]]].map(function(f){return '<circle cx="'+f[0]+'" cy="'+f[1]+'" r="8.5" fill="'+f[2]+'" stroke="#1f2b4a" stroke-width="1.4"/><circle cx="'+f[0]+'" cy="'+f[1]+'" r="2.4" fill="#e9c46a"/>'}).join('')+'</svg>';}
+  var g=document.getElementById('game'),st=document.getElementById('start'),go=document.getElementById('go'),sc=document.getElementById('sc'),tm=document.getElementById('tm');
+  var score=0,left=20,spawn=null,tick=null;
+  document.getElementById('ico').innerHTML=bouquet();
+  function fh(){g.style.setProperty('--fallh',(g.clientHeight+100)+'px')}fh();addEventListener('resize',fh);
+  /* el zapato es una trampa: si lo tocas, -2 */
+  function shoe(){return '<svg viewBox="0 0 58 66"><path d="M8 44 C8 36 14 34 20 38 C27 43 34 46 44 46 C50 46 52 50 52 54 L52 56 L14 56 L14 62 L9 62 Z" fill="#c63a2f" stroke="#1f2b4a" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 44 L12 62" stroke="#1f2b4a" stroke-width="3" stroke-linecap="round"/><path d="M22 41 C30 47 38 49 46 49" stroke="#ffd2cc" stroke-width="1.6" fill="none"/></svg>'}
+  var t0=0,timer=null;
+  function el(){return (Date.now()-t0)/1000}
+  function drop(){var t=el(),bad=t>3&&Math.random()<.28;
+    var b=document.createElement('button');b.type='button';b.className='bq'+(bad?' bad':'');b.setAttribute('aria-label',bad?(bg?'Обувка (капан)':'Zapato (trampa)'):(bg?'Букет':'Ramo'));b.innerHTML=bad?shoe():bouquet();
+    var sz=Math.max(42,62-t*1.1),W=g.clientWidth;b.style.setProperty('--sz',sz+'px');b.style.left=(10+Math.random()*(W-sz-20))+'px';
+    b.style.setProperty('--rot',(Math.random()*100-50)+'deg');b.style.setProperty('--dx',(t>5?(8+Math.random()*Math.min(40,t*2)):0)+'px');b.style.setProperty('--sw',(.45+Math.random()*.5)+'s');
+    b.style.animationDuration=(Math.max(.95,2.3-t*.07)+Math.random()*.4)+'s';
+    b.addEventListener('pointerdown',function(e){e.preventDefault();if(b.classList.contains('got'))return;b.classList.add('got');
+      var d=bad?-2:1;score=Math.max(0,score+d);sc.textContent=score;
+      if(bad){g.classList.remove('hit');void g.offsetWidth;g.classList.add('hit')}
+      var p=document.createElement('span');p.className='plus'+(bad?' neg':'');p.textContent=bad?'−2':'+1';var r=b.getBoundingClientRect(),q=g.getBoundingClientRect();p.style.left=(r.left-q.left+sz/3)+'px';p.style.top=(r.top-q.top)+'px';g.appendChild(p);setTimeout(function(){p.remove()},700);
+      setTimeout(function(){b.remove()},350)});
+    b.addEventListener('animationend',function(e){if(e.animationName==='fall')b.remove()});
+    g.appendChild(b);
+    timer=setTimeout(drop,Math.max(260,620-t*20)*(.7+Math.random()*.6));}
+  function end(){clearTimeout(timer);clearInterval(tick);[].forEach.call(g.querySelectorAll('.bq'),function(b){b.remove()});
+    var m=MSG[0][1];MSG.forEach(function(x){if(score>=x[0])m=x[1]});
+    st.innerHTML='<p class="result">'+(bg?'Хвана ':'Has atrapado ')+score+(bg?(score===1?' букет':' букета'):(score===1?' ramo':' ramos'))+'</p><p>'+m+'</p><button class="btn" type="button" id="go2">'+(bg?T.again:'Otra vez')+'</button>';
+    st.hidden=false;document.getElementById('go2').addEventListener('click',start);document.getElementById('go2').focus();}
+  function start(){score=0;left=20;sc.textContent=0;tm.textContent=left;st.hidden=true;t0=Date.now();drop();
+    tick=setInterval(function(){left--;tm.textContent=left;if(left<=0)end()},1000);}
+  go.addEventListener('click',start);
+})();
+</script>
+</body></html>

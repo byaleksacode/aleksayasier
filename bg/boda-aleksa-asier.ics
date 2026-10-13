@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Aleksa y Asier//Boda//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:boda-aleksa-asier-20270911@aleksayasier
+DTSTAMP:20261013T000000Z
+DTSTART;VALUE=DATE:20270911
+DTEND;VALUE=DATE:20270912
+SUMMARY:Сватбата на Алекса и Асиер
+LOCATION:Варна\, България
+DESCRIPTION:Църква „Св. Архангел Михаил“ (Варна) и празник в Thracian Cliffs Golf & Beach Resort. Повече в сайта.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Сватбата на Алекса и Асиер
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
