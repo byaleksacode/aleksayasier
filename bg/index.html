@@ -1871,6 +1871,25 @@ html.gv-lock,html.gv-lock body{overflow:hidden}
 @media (min-width:860px) and (max-width:1199px){#dresscode .dcol{zoom:1.35!important}}
 
 
+
+/* padrinos / кумове */
+#kumove{background:var(--cobalt);color:var(--paper);overflow:hidden}
+#kumove .head h2{color:var(--paper)}
+#kumove .head .hand{color:var(--cielo)}
+#kumove .kmv{display:grid;justify-items:center;text-align:center}
+#kumove .knm{display:grid;justify-items:center;margin:0;font-weight:600;text-transform:uppercase;letter-spacing:-.045em;line-height:.86;font-size:clamp(2.8rem,13.5vw,3.9rem);color:var(--paper)}
+#kumove .knm .l2{display:flex;align-items:center}
+#kumove .knm i{font-family:var(--hand);font-style:normal;font-weight:400;text-transform:none;letter-spacing:0;color:var(--cielo);font-size:.36em;line-height:1;margin-right:.25em;transform:rotate(-8deg) translateY(.15em)}
+#kumove .kfam{margin:20px 0 0;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:-.01em;color:var(--cielo)}
+#kumove .kthx{margin-top:26px;color:var(--paper);font-size:1.05rem;transform:rotate(-3deg)}
+@media (min-width:860px){
+  #kumove{display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important;gap:0 clamp(56px,6vw,110px)!important;align-items:center!important;padding:clamp(130px,13vh,170px) var(--gut)!important}
+  #kumove>.head{grid-column:1!important;justify-items:start!important;text-align:left!important;margin:0!important}
+  #kumove>.kmv{grid-column:2!important;justify-items:start;text-align:left}
+  #kumove .knm{justify-items:start;font-size:min(clamp(4.2rem,6vw,6.6rem),calc((94vw - 2 * var(--gut)) * .058))}
+  #kumove .kfam{font-size:.95rem;margin-top:28px}
+  #kumove .kthx{font-size:1.35rem}
+}
 /* acordeón suave */
 details.acc .acw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.3,.7,.2,1)}
 details.acc .aci{overflow:hidden;min-height:0;opacity:0;transition:opacity .3s ease}
@@ -1898,6 +1917,8 @@ html.ld #ldr,#ldr.on{display:flex}
 @media (min-width:860px){#ldr{padding:36px 48px 44px}#ldr .lt{font-size:.9rem}}
 html.ld .ani{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){#ldr{transition-duration:.01s}}
+
+#kumove .knm i{font-size-adjust:.6}
 
 /* búlgaro: la letra a mano en cirílico (Caveat) a la misma altura que Homemade Apple */
 .hand,.mark sup,.who i,.palname,.env .card2 span,.nmA i,.dhint,.fword i,.dk .qt,.nm2 i,.b3 span,#aprovecha .swipe{font-size-adjust:.6}
@@ -1962,7 +1983,7 @@ html.ld .ani{animation-play-state:paused}
 
 <nav class="tabs" id="tabs" aria-label="Раздели">
   <div class="strip">
-    <a href="#fecha">Дата</a><a href="#programa">Програма</a><a href="#tradicion">Испанците</a><a href="#rechnik">Речник</a><a href="#rakia">Ракия</a><a href="#dresscode">Облекло</a><a href="#regalos">Подаръци</a><a href="#dudas">Въпроси</a>
+    <a href="#fecha">Дата</a><a href="#programa">Програма</a><a href="#kumove">Кумове</a><a href="#tradicion">Испанците</a><a href="#rechnik">Речник</a><a href="#rakia">Ракия</a><a href="#dresscode">Облекло</a><a href="#regalos">Подаръци</a><a href="#dudas">Въпроси</a>
   </div>
   <a class="go" href="#confirmar">Потвърди</a>
 </nav>
@@ -2015,6 +2036,12 @@ html.ld .ani{animation-play-state:paused}
   <p class="pnote rv"><span class="hand">часовете — съвсем скоро</span></p>
 </section>
 <!-- ===== BODA BÚLGARA ===== -->
+<!-- ===== PADRINOS (KUMOVE) ===== -->
+<section class="s" id="kumove">
+  <div class="head rv"><span class="hand">с обич</span><h2>Нашите кумове</h2></div>
+  <div class="kmv rv"><p class="knm"><span>Велина</span><span class="l2"><i>и</i>Емчо</span></p><p class="kfam">Андрееви</p><span class="hand kthx">благодарни, че ще сте до нас</span></div>
+</section>
+
 <section class="s bgb" id="tradicion">
   <div class="head rv"><span class="hand">за да не те изненадат</span><h2>Испанците</h2><p class="lead">Половината гости идват от Испания. Ако чуеш или видиш нещо странно, ето какво означава.</p></div>
   <div class="bnote rv" id="bnote"><div class="bcols"><details class="bgi" open><summary><svg viewBox="0 0 24 24"><path d="M12 21C6 16.5 2.5 13 2.5 9A4.5 4.5 0 0 1 12 6.5 4.5 4.5 0 0 1 21.5 9c0 4-3.5 7.5-9.5 12z"/></svg><b>«¡Que se besen!»</b><i aria-hidden="true">+</i></summary><p>Значи „Да се целунат!“. Когато испанците започнат да го скандират, искат младоженците да се целунат. И няма да спрат, докато не го направят. <span class="hand">свиквай</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0zM12 14v6M8 21h8"/></svg><b>«¡Vivan los novios!»</b><i aria-hidden="true">+</i></summary><p>„Да живеят младоженците!“ Някой го извиква, а всички отговарят „¡Vivan!“. Колкото по-силно, толкова по-добре.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg><b>Две целувки</b><i aria-hidden="true">+</i></summary><p>В Испания се поздравяват с две целувки по бузите, дори когато се виждат за първи път. Не се стряскай! <span class="hand">мляс, мляс</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M10 3h4l-1 3 3 12-4 3-4-3 3-12z"/></svg><b>Вратовръзката</b><i aria-hidden="true">+</i></summary><p>Понякога приятелите режат вратовръзката на младоженеца на парченца и ги продават на гостите. Парите са за младоженците.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v5h-5"/></svg><b>До сутринта</b><i aria-hidden="true">+</i></summary><p>Испанците вечерят късно и танцуват до сутринта. Ако в шест сутринта още са на дансинга — всичко е наред.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="9" ry="6"/><path d="M8 11l2 2M12 10l2 2M15 12l2 2"/></svg><b>«¡Salud!»</b><i aria-hidden="true">+</i></summary><p>Така казват „Наздраве!“ на испански. Отговори им с българско „Наздраве!“ — много ще им хареса. <span class="hand">¡Salud! Наздраве!</span></p></details></div></div>
@@ -2159,7 +2186,7 @@ html.ld .ani{animation-play-state:paused}
 <div class="mpanel" id="mpanel" hidden>
   <div class="mp-in" role="dialog" aria-modal="true" aria-label="Раздели на сайта">
     <div class="mp-top" style="justify-content:flex-end"><button type="button" class="mp-x" id="mpx" aria-label="Затвори менюто"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
-    <ul><li><a href="#fecha">Запази датата</a></li><li></li><li><a href="#programa">Програма</a></li><li><a href="#tradicion">Испанците</a></li><li><a href="#rechnik">Малък речник</a></li><li><a href="#rakia">Ракиометър</a></li><li><a href="#dresscode">Облекло</a></li><li><a href="#regalos">Подаръци</a></li><li><a href="#dudas">Въпроси</a></li></ul>
+    <ul><li><a href="#fecha">Запази датата</a></li><li></li><li><a href="#programa">Програма</a></li><li><a href="#kumove">Нашите кумове</a></li><li><a href="#tradicion">Испанците</a></li><li><a href="#rechnik">Малък речник</a></li><li><a href="#rakia">Ракиометър</a></li><li><a href="#dresscode">Облекло</a></li><li><a href="#regalos">Подаръци</a></li><li><a href="#dudas">Въпроси</a></li></ul>
     <a class="mp-ok" href="#confirmar">Потвърди присъствие</a>
   </div>
 </div>
@@ -2174,7 +2201,7 @@ html.ld .ani{animation-play-state:paused}
   <div class="sh-bg" data-close></div>
   <div class="sh-in" role="dialog" aria-label="Още раздели">
     <i class="grab"></i>
-    <a href="#fecha">Запази датата</a><a href="#tradicion">Испанците</a><a href="#rakia">Ракиометър</a><a href="#dresscode">Облекло</a><a href="#regalos">Подаръци</a><a href="#dudas">Въпроси</a>
+    <a href="#fecha">Запази датата</a><a href="#kumove">Нашите кумове</a><a href="#tradicion">Испанците</a><a href="#rakia">Ракиометър</a><a href="#dresscode">Облекло</a><a href="#regalos">Подаръци</a><a href="#dudas">Въпроси</a>
   </div>
 </div>
 <script>
