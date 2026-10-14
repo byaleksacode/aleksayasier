@@ -1871,6 +1871,25 @@ html.gv-lock,html.gv-lock body{overflow:hidden}
 @media (min-width:860px) and (max-width:1199px){#dresscode .dcol{zoom:1.35!important}}
 
 
+
+/* padrinos / кумове */
+#kumove{background:var(--cobalt);color:var(--paper);overflow:hidden}
+#kumove .head h2{color:var(--paper)}
+#kumove .head .hand{color:var(--cielo)}
+#kumove .kmv{display:grid;justify-items:center;text-align:center}
+#kumove .knm{display:grid;justify-items:center;margin:0;font-weight:600;text-transform:uppercase;letter-spacing:-.045em;line-height:.86;font-size:clamp(2.8rem,13.5vw,3.9rem);color:var(--paper)}
+#kumove .knm .l2{display:flex;align-items:center}
+#kumove .knm i{font-family:var(--hand);font-style:normal;font-weight:400;text-transform:none;letter-spacing:0;color:var(--cielo);font-size:.36em;line-height:1;margin-right:.25em;transform:rotate(-8deg) translateY(.15em)}
+#kumove .kfam{margin:20px 0 0;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:-.01em;color:var(--cielo)}
+#kumove .kthx{margin-top:26px;color:var(--paper);font-size:1.05rem;transform:rotate(-3deg)}
+@media (min-width:860px){
+  #kumove{display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important;gap:0 clamp(56px,6vw,110px)!important;align-items:center!important;padding:clamp(130px,13vh,170px) var(--gut)!important}
+  #kumove>.head{grid-column:1!important;justify-items:start!important;text-align:left!important;margin:0!important}
+  #kumove>.kmv{grid-column:2!important;justify-items:start;text-align:left}
+  #kumove .knm{justify-items:start;font-size:min(clamp(4.2rem,6vw,6.6rem),calc((94vw - 2 * var(--gut)) * .058))}
+  #kumove .kfam{font-size:.95rem;margin-top:28px}
+  #kumove .kthx{font-size:1.35rem}
+}
 /* acordeón suave */
 details.acc .acw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.3,.7,.2,1)}
 details.acc .aci{overflow:hidden;min-height:0;opacity:0;transition:opacity .3s ease}
@@ -1934,7 +1953,7 @@ html.ld .ani{animation-play-state:paused}
 
 <nav class="tabs" id="tabs" aria-label="Secciones">
   <div class="strip">
-    <a href="#fecha">Fecha</a><a href="#programa">Programa</a><a href="#tradicion">Boda búlgara</a><a href="#viaje">Viaje</a><a href="#aprovecha">Aprovecha</a><a href="#dresscode">Dress code</a><a href="#regalos">Regalos</a><a href="#dudas">Dudas</a>
+    <a href="#fecha">Fecha</a><a href="#programa">Programa</a><a href="#kumove">Padrinos</a><a href="#tradicion">Boda búlgara</a><a href="#viaje">Viaje</a><a href="#aprovecha">Aprovecha</a><a href="#dresscode">Dress code</a><a href="#regalos">Regalos</a><a href="#dudas">Dudas</a>
   </div>
   <a class="go" href="#confirmar">Confirmar</a>
 </nav>
@@ -1987,6 +2006,12 @@ html.ld .ani{animation-play-state:paused}
   <p class="pnote rv"><span class="hand">horarios, muy pronto</span></p>
 </section>
 <!-- ===== BODA BÚLGARA ===== -->
+<!-- ===== PADRINOS (KUMOVE) ===== -->
+<section class="s" id="kumove">
+  <div class="head rv"><span class="hand">los kumove</span><h2>Nuestros padrinos</h2></div>
+  <div class="kmv rv"><p class="knm"><span>Velina</span><span class="l2"><i>y</i>Emcho</span></p><p class="kfam">Andreevi</p><span class="hand kthx">gracias por estar siempre ahí</span></div>
+</section>
+
 <section class="s bgb" id="tradicion">
   <div class="head rv"><span class="hand">para que no te pille de sorpresa</span><h2>Boda búlgara</h2><p class="lead">La ceremonia es ortodoxa y en búlgaro. Si en algún momento te preguntas «¿qué está pasando?», aquí tienes la respuesta.</p></div>
   <div class="bnote rv" id="bnote"><div class="bcols"><details class="bgi" open><summary><svg viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/><path d="M5 19h14"/></svg><b>Las coronas</b><i aria-hidden="true">+</i></summary><p>El sacerdote (aquí le llaman «pop») pone una corona a cada uno. Significa que, desde ese momento, son los reyes de su propia casa: una familia nueva. <span class="hand">nada de tiaras</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0zM12 14v6M8 21h8"/></svg><b>Una copa para dos</b><i aria-hidden="true">+</i></summary><p>Beben vino de la misma copa, tres sorbos cada uno. Es su forma de decir que, a partir de hoy, lo comparten todo.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v5h-5"/></svg><b>Tres vueltas</b><i aria-hidden="true">+</i></summary><p>De la mano y detrás del pop, dan tres vueltas alrededor de la mesa del altar. Son sus primeros pasos como matrimonio.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg><b>Los kumove</b><i aria-hidden="true">+</i></summary><p>Se pronuncia «kúmove». Son los testigos y padrinos de la boda, normalmente una pareja: el kum y la kuma. En Bulgaria es un papel para toda la vida, y suelen ser también los padrinos de los hijos.</p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><path d="M12.5 21.8c-2.8.3-4.6-1.4-4.4-3.8.1-2-1.2-3.4-1.3-5.5-.2-2.9 1.9-5 4.8-5 3.1 0 5.1 2.1 4.9 5.1-.2 2.3-1.4 3.4-1.3 5.5.1 2.2-.6 3.5-2.7 3.7z"/><g style="fill:currentColor;stroke:none"><ellipse cx="7.6" cy="4" rx="1.7" ry="1.9"/><circle cx="11.3" cy="2.6" r="1.25"/><circle cx="14.3" cy="2.9" r="1.1"/><circle cx="16.8" cy="4.3" r=".98"/><circle cx="18.5" cy="6.4" r=".86"/></g></svg><b>El pisotón</b><i aria-hidden="true">+</i></summary><p>En algún momento de la ceremonia, cada uno intenta pisarle el pie al otro. Dicen que quien lo consiga primero mandará en casa. <span class="hand">apuestas abiertas</span></p></details><details class="bgi"><summary><svg viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="9" ry="6"/><path d="M8 11l2 2M12 10l2 2M15 12l2 2"/></svg><b>Pan y miel</b><i aria-hidden="true">+</i></summary><p>Al llegar al banquete nos reciben con una «pita», un pan redondo casero. Cada uno tira de un lado: quien se quede el trozo más grande, se toma la revancha del pisotón. Después se moja en miel, para que la vida juntos sea dulce. <span class="hand">¡Nazdrave! (¡salud!)</span></p></details></div></div>
@@ -2154,7 +2179,7 @@ html.ld .ani{animation-play-state:paused}
 <div class="mpanel" id="mpanel" hidden>
   <div class="mp-in" role="dialog" aria-modal="true" aria-label="Secciones de la web">
     <div class="mp-top" style="justify-content:flex-end"><button type="button" class="mp-x" id="mpx" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
-    <ul><li><a href="#fecha">Guarda la fecha</a></li><li></li><li><a href="#programa">Programa</a></li><li><a href="#tradicion">Boda búlgara</a></li><li><a href="#viaje">Cómo llegar</a></li><li><a href="#aprovecha">Qué ver y comer</a></li><li><a href="#dresscode">Dress code</a></li><li><a href="#regalos">Regalos</a></li><li><a href="#dudas">Dudas</a></li></ul>
+    <ul><li><a href="#fecha">Guarda la fecha</a></li><li></li><li><a href="#programa">Programa</a></li><li><a href="#kumove">Nuestros padrinos</a></li><li><a href="#tradicion">Boda búlgara</a></li><li><a href="#viaje">Cómo llegar</a></li><li><a href="#aprovecha">Qué ver y comer</a></li><li><a href="#dresscode">Dress code</a></li><li><a href="#regalos">Regalos</a></li><li><a href="#dudas">Dudas</a></li></ul>
     <a class="mp-ok" href="#confirmar">Confirmar asistencia</a>
   </div>
 </div>
@@ -2169,7 +2194,7 @@ html.ld .ani{animation-play-state:paused}
   <div class="sh-bg" data-close></div>
   <div class="sh-in" role="dialog" aria-label="Más secciones">
     <i class="grab"></i>
-    <a href="#fecha">Guarda la fecha</a><a href="#tradicion">Boda búlgara</a><a href="#aprovecha">Aprovecha</a><a href="#dresscode">Dress code</a><a href="#regalos">Regalos</a><a href="#dudas">Dudas</a>
+    <a href="#fecha">Guarda la fecha</a><a href="#kumove">Nuestros padrinos</a><a href="#tradicion">Boda búlgara</a><a href="#aprovecha">Aprovecha</a><a href="#dresscode">Dress code</a><a href="#regalos">Regalos</a><a href="#dudas">Dudas</a>
   </div>
 </div>
 <script>
